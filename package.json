@@ -1,0 +1,34 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A generator of difference between two given files",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unInsomnia/frontend-project-lvl2.git"
+  },
+  "keywords": [
+    "difference",
+    "generator"
+  ],
+  "author": "Koder Odilov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unInsomnia/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/unInsomnia/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^9.4.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.1"
+  }
+}
