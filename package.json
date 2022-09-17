@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A generator of difference between two given files",
-  "main": "index.js",
+  "main": "bin/gendiff.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "eslint": "^8.23.1"
+    "eslint": "^8.23.1",
+    "jest": "^29.0.3"
   }
 }
