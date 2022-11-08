@@ -13,5 +13,3 @@ gendiff:
 test:
 	NODE_OPTIONS=--experimental-vm-modules npx jest
 
-hello:
-	echo 'Hello world'
