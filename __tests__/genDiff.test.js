@@ -13,5 +13,5 @@ test('General functions genDiff', () => {
     const filepath2 = path.resolve(__dirname, '__fixtures__', 'file2.json');
     const expected = fs.readFileSync(resultpath, 'utf-8').toString();
     expect(compare(filepath1, filepath2)).toEqual(expected);
-    expect(compare('_tests_/__fixtures__/file1.json', '_tests_/__fixtures__/file2.json')).toEqual(expected);
+    expect(compare('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.json')).toEqual(expected);
 });

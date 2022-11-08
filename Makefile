@@ -13,3 +13,6 @@ gendiff:
 test:
 	NODE_OPTIONS=--experimental-vm-modules npx jest
 
+testCoverage:
+	NODE_OPTIONS=--experimental-vm-modules npx jest --coverage
+
