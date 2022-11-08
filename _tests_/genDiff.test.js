@@ -1,5 +1,4 @@
 import { expect, test } from "@jest/globals";
-import process from 'node:process';
 import compare from "../bin/compare";
 import path from 'path';
 import fs from 'fs';

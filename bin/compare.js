@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
 import _ from "lodash";
-import process from 'node:process';
-import __dirname from 'path';
 
 export default (filepath1, filepath2) => {
     const path1 = path.resolve(filepath1);
