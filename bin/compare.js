@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 export default (data1, data2) => {
         const data1Changes = {};
         const data2Changes = {};
