@@ -1,5 +1,5 @@
 
-name: hello-world
+name: Eslint
 
 on: push
 
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: make hello
+      - run: make lint
