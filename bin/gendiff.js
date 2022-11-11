@@ -3,7 +3,7 @@ import {program} from "commander";
 import fs from "fs";
 import path from "path";
 import _ from "lodash";
-
+import { process } from 'node:process';
 
 program
     .version('1.0.0')
