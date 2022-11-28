@@ -1,5 +1,5 @@
 
-name: Eslint
+name: Eslint and Test
 
 on: push
 
@@ -9,3 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make lint
+      - run: make test
