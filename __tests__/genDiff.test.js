@@ -20,7 +20,8 @@ let expected;
 beforeEach(() => {
     const resultPath = getFixturePath('result.yml');
     expected = fs.readFileSync(resultPath, 'utf-8');
-})
+});
+
 test('genDiff with JSON', () => {
     const filepath1 = getFixturePath('file1.json');
     const filepath2 = getFixturePath('file2.json');

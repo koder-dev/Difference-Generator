@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A generator of difference between two given files",
   "type": "module",
-  "main": "bin/gendiff.js",
+  "main": "index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unInsomnia/frontend-project-lvl2.git"
+    "url": "git+https://github.com/koder-dev/frontend-project-lvl2.git"
   },
   "keywords": [
     "difference",
@@ -21,9 +21,9 @@
   "author": "Koder Odilov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/unInsomnia/frontend-project-lvl2/issues"
+    "url": "https://github.com/koder-dev/frontend-project-lvl2/issues"
   },
-  "homepage": "https://github.com/unInsomnia/frontend-project-lvl2#readme",
+  "homepage": "https://github.com/koder-dev/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.4.0",
     "js-yaml": "^4.1.0",
