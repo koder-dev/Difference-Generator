@@ -30,7 +30,7 @@ test('genDiff with JSON', () => {
     const file2 = fs.readFileSync(filepath2, 'utf-8');
 
 
-    const parsedData = parser(file1, file2, path.extname(filepath1));
+    const parsedData = parser(file1, file2, path.extname(filepath1), path.extname(filepath2));
     const data = compare(...parsedData);
     const actual = stylish(data);
 
@@ -46,7 +46,7 @@ test('genDiff with Yaml', () => {
     const file2 = fs.readFileSync(filepath2, 'utf-8');
 
 
-    const parsedData = parser(file1, file2, path.extname(filepath1));
+    const parsedData = parser(file1, file2, path.extname(filepath1), path.extname(filepath2));
     const data = compare(...parsedData);
     const actual = stylish(data);
 
@@ -67,7 +67,7 @@ test('genDiff with nested JSON', () => {
     const file2 = fs.readFileSync(filepath2, 'utf-8');
 
 
-    const parsedData = parser(file1, file2, path.extname(filepath1));
+    const parsedData = parser(file1, file2, path.extname(filepath1), path.extname(filepath2));
     const data = compare(...parsedData);
     const actual = stylish(data);
     const actualPlain = plain(data);

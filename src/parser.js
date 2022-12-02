@@ -1,14 +1,20 @@
 import yaml from 'js-yaml';
 
-export default (file1, file2, ext ) => {
+const pars = (file, ext) => {
     switch (ext) {
-        case '.json':
-            return [JSON.parse(file1), JSON.parse(file2)];
-        case '.yml':
-            return [yaml.load(file1), yaml.load(file2)];
-        case '.yaml':
-            return [yaml.load(file1), yaml.load(file2)];
-        default: 
-            throw new Error('extension error');
+    case '.json':
+        return JSON.parse(file);
+    case '.yml':
+        return yaml.load(file);
+    case '.yaml':
+        return yaml.load(file);
+    default: 
+        throw new Error('extension error');
     }
+}
+
+export default (file1, file2, ext1, ext2) => {
+    const data1 = pars(file1, ext1);
+    const data2 = pars(file2, ext2);
+    return [data1, data2];
 };
