@@ -75,4 +75,4 @@ test('genDiff with nested JSON', () => {
     expect(parsedData).toEqual([JSON.parse(file1), JSON.parse(file2)]);
     expect(actual).toEqual(expected);
     expect(actualPlain).toEqual(expectedPlain);
-})
+});
