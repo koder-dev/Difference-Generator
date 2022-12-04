@@ -1,4 +1,4 @@
-import { beforeEach, expect, test } from '@jest/globals';
+import { expect, test } from '@jest/globals';
 import path, { dirname } from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
@@ -14,14 +14,9 @@ const getFixturePath = (file) => {
   return path.resolve(__dirname, '..', '__fixtures__', file);
 };
 
-let expected;
-
-beforeEach(() => {
-  const resultPath = getFixturePath('result.yml');
-  expected = fs.readFileSync(resultPath, 'utf-8');
-});
-
 test('genDiff with JSON', () => {
+  const resultPath = getFixturePath('result.yml');
+  const expected = fs.readFileSync(resultPath, 'utf-8');
   const filepath1 = getFixturePath('file1.json');
   const filepath2 = getFixturePath('file2.json');
 
@@ -37,6 +32,8 @@ test('genDiff with JSON', () => {
 });
 
 test('genDiff with Yaml', () => {
+  const resultPath = getFixturePath('result.yml');
+  const expected = fs.readFileSync(resultPath, 'utf-8');
   const filepath1 = getFixturePath('file1.yml');
   const filepath2 = getFixturePath('file2.yml');
 
@@ -54,7 +51,7 @@ test('genDiff with Yaml', () => {
 test('genDiff with nested JSON', () => {
   const nestedPath = getFixturePath('nestedResult.txt');
   const nestedPlainPath = getFixturePath('nestedResultPlain.txt');
-  expected = fs.readFileSync(nestedPath, 'utf-8');
+  const expected = fs.readFileSync(nestedPath, 'utf-8');
   const expectedPlain = fs.readFileSync(nestedPlainPath, 'utf-8');
 
   const filepath1 = getFixturePath('nested1.json');

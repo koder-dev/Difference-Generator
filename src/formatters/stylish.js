@@ -1,49 +1,45 @@
 import _ from 'lodash';
 
-const buildStr = (formatedData, spaceCount = 2) => {
-  let str = '{\n';
-  const space = ' ';
-  _.forEach(formatedData, (v, key) => {
-    let k = key;
-    if (k[0].match('[a-z]')) k = `  ${k}`;
-    if (_.isObject(v)) {
-      str += `${space.repeat(spaceCount)}${k}: ${buildStr(v, spaceCount + 4)}${space.repeat(spaceCount + 2)}}\n`;
-    } else {
-      str += `${space.repeat(spaceCount)}${k}: ${v}\n`;
-    }
-  });
-  return str;
+const toStr = (item, spaceCount) => {
+  if (_.isObject(item)) {
+    const space = ' ';
+    const result = _.map(item, (value, key) => {
+      if (_.isObject(value)) {
+        return `${space.repeat(spaceCount + 2)}${key}: ${toStr(value, spaceCount + 4)}`;
+      }
+      return `${space.repeat(spaceCount + 2)}${key}: ${value}`;
+    });
+    return `{\n${result.join('\n')}\n${space.repeat(spaceCount - 2)}}`;
+  }
+  return item;
 };
 
-const buildFormated = (arr) => {
-  const result = {};
-  arr.forEach((el) => {
+const buildFormated = (arr, spaceCount = 2) => {
+  const space = ' ';
+  return arr.map((el) => {
     switch (el.status) {
       case 'added':
-        result[`+ ${el.key}`] = el.value;
-        break;
+        return `${space.repeat(spaceCount)}+ ${el.key}: ${toStr(el.value, spaceCount + 4)}`;
       case 'deleted':
-        result[`- ${el.key}`] = el.value;
-        break;
-      case 'updated':
-        result[`- ${el.key}`] = el.value1;
-        result[`+ ${el.key}`] = el.value2;
-        break;
+        return `${space.repeat(spaceCount)}- ${el.key}: ${toStr(el.value, spaceCount + 4)}`;
+      case 'updated': {
+        const firstFile = `${space.repeat(spaceCount)}- ${el.key}: ${toStr(el.value1, spaceCount + 4)}`;
+        const secondFile = `${space.repeat(spaceCount)}+ ${el.key}: ${toStr(el.value2, spaceCount + 4)}`;
+        return `${firstFile}\n${secondFile}`;
+      }
       case 'notChanged':
-        result[`${' '.repeat(2)}${el.key}`] = el.value;
-        break;
-      case 'nested':
-        result[`${' '.repeat(2)}${el.key}`] = buildFormated(el.childrens);
-        break;
+        return `${space.repeat(spaceCount + 2)}${el.key}: ${toStr(el.value, spaceCount + 4)}`;
+      case 'nested': {
+        const nestedEl = buildFormated(el.childrens, spaceCount + 4).join('\n');
+        return `${space.repeat(spaceCount + 2)}${el.key}: {\n${nestedEl}\n${space.repeat(spaceCount + 2)}}`;
+      }
       default:
         throw new Error('unknown status');
     }
   });
-  return result;
 };
 
 export default (data) => {
-  const formatedData = buildFormated(data);
-  const result = buildStr(formatedData);
-  return `${result}}`;
+  const result = buildFormated(data).join('\n');
+  return `{\n${result}\n}`;
 };

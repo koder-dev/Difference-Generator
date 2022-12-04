@@ -10,7 +10,6 @@ export default (data, format = 'stylish') => {
     case 'json':
       return JSON.stringify(data);
     default:
-      console.log(format);
       throw new Error('Format error');
   }
 };

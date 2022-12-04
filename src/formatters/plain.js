@@ -1,5 +1,11 @@
 import _ from 'lodash';
 
+const formatValue = (value) => {
+  if (_.isObject(value)) return '[complex value]';
+  if (_.isString(value)) return `'${value}'`;
+  return value;
+};
+
 const plain = (data, parrent) => {
   const p = parrent ? `${parrent}.` : '';
   const result = data.map((el) => {
@@ -8,20 +14,12 @@ const plain = (data, parrent) => {
       case 'deleted':
         return `Property '${p}${key}' was removed`;
       case 'added': {
-        let { value } = el;
-        if (typeof value === 'string') value = `'${value}'`;
-        value = _.isObject(el.value) ? '[complex value]' : value;
+        const value = formatValue(el.value);
         return `Property '${p}${key}' was added with value: ${value}`;
       }
       case 'updated': {
-        let { value1, value2 } = el;
-
-        if (typeof value1 === 'string') value1 = `'${value1}'`;
-        if (typeof value2 === 'string') value2 = `'${value2}'`;
-
-        value1 = _.isObject(el.value1) ? '[complex value]' : value1;
-        value2 = _.isObject(el.value2) ? '[complex value]' : value2;
-
+        const value1 = formatValue(el.value1);
+        const value2 = formatValue(el.value2);
         return `Property '${p}${key}' was updated. From ${value1} to ${value2}`;
       }
       case 'nested': {

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const compare = (data1, data2) => {
-  const keys = _.union(_.keys(data1), _.keys(data2)).sort();
+  const keys = _.sortBy(_.union(_.keys(data1), _.keys(data2)));
   const result = keys.map((key) => {
     if (_.has(data1, key) && !_.has(data2, key)) {
       return { key, status: 'deleted', value: data1[key] };
